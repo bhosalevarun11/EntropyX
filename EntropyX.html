@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EntropyX</title>
+<link rel="stylesheet" href="entropy.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="entropy.js" defer></script>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="particles" id="particles"></div>
+<div id="toast-container"></div>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo">ENTROPYX</div>
+    <div class="logo-tag">[ SECURITY ANALYSIS SUITE v2.0 ]</div>
+  </div>
+  <div class="subtitle">// SMART PASSWORD ANALYZER &amp; THREAT SIMULATOR</div>
+</header>
+
+<main class="container">
+  <div class="card">
+    <h2>ANALYZE PASSWORD</h2>
+
+    <div class="input-section">
+      <div class="input-wrap" id="inputWrap">
+        <input type="password" id="pwd" placeholder="// enter password to analyze..." autocomplete="off">
+        <button class="eye" id="toggleEye" title="Toggle visibility">👁</button>
+      </div>
+      <div class="pwd-meta" id="pwdMeta">
+        <span class="meta-badge" id="mLower">a-z</span>
+        <span class="meta-badge" id="mUpper">A-Z</span>
+        <span class="meta-badge" id="mNum">0-9</span>
+        <span class="meta-badge" id="mSym">!@#</span>
+        <span class="meta-badge" id="mLen">LEN:0</span>
+      </div>
+    </div>
+
+    <button class="btn-analyze" id="analyzeBtn"><span>▶ RUN ANALYSIS</span></button>
+
+    <div class="bar-wrap">
+      <div class="bar-label">
+        <span>STRENGTH RATING</span>
+        <span id="strengthText">——</span>
+      </div>
+      <div class="strength-bar"><div id="bar"></div></div>
+      <div class="bar-ticks">
+        <span>CRITICAL</span><span>WEAK</span><span>FAIR</span><span>STRONG</span><span>ELITE</span>
+      </div>
+    </div>
+
+    <div class="entropy-display" id="entropyDisplay" style="display:none">
+      <div class="e-card" id="eCard1">
+        <div class="e-label">ENTROPY</div>
+        <div class="e-value" id="eVal">—</div>
+        <div class="e-unit">BITS</div>
+      </div>
+      <div class="e-card" id="eCard2">
+        <div class="e-label">EST. CRACK TIME</div>
+        <div class="e-value" id="tVal" style="font-size:16px">—</div>
+        <div class="e-unit">AT 1B HASH/SEC</div>
+      </div>
+    </div>
+
+    <div class="suggest-section" id="suggestSection" style="display:none">
+      <div class="suggest-title">
+        <span>// STRONGER ALTERNATIVES</span>
+        <button class="btn-refresh" onclick="refreshSuggestions()">↺ REGENERATE</button>
+      </div>
+      <div id="suggestList"></div>
+    </div>
+
+    <div class="chart-wrap" id="chartWrap" style="display:none">
+      <div class="chart-title">// SECURITY SPECTRUM — CRACK TIME COMPARISON</div>
+      <canvas id="chart" height="140"></canvas>
+    </div>
+
+    <div class="sim-section">
+      <div class="sim-header">
+        <div class="sim-title">
+          <span class="sim-dot"></span>
+          ATTACK SIMULATION
+        </div>
+        <div class="sim-stats">
+          <span class="sim-stat">ATTEMPTS: <b id="attempts">0</b></span>
+          <span class="sim-stat">RATE: <b>1B/SEC</b></span>
+        </div>
+      </div>
+      <div id="sim"><span class="sim-await">// awaiting input...</span></div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  ENTROPYX // CYBERSECURITY PROJECT // CLASSIFIED
+</footer>
+
+</body>
+</html>
